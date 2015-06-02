@@ -19,3 +19,8 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
+Route::get("teste", function(){
+	echo "Isso é um teste";
+});
