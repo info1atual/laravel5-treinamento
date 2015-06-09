@@ -22,10 +22,10 @@ use Illuminate\Http\Request;
 	        
 		}
 
-		public function editar(Category $category)
+		public function editar($category)
 		{
 						
-			return $category->all();
+			return $category->name;
 
 		}
 
