@@ -11,14 +11,42 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-
-Route::get('home', 'HomeController@index');
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::get("admin/categories", "AdminCategoriesController@index");
-Route::get("admin/products", "AdminProductsController@index");
+// --------------------- //
+// Padrões de Parametros //
+// --------------------- //
+
+Route::pattern('id', '[0-9]+');
+
+Route::get('/', 'WelcomeController@index');
+Route::get('home', 'HomeController@index');
+
+Route::get('exemplo', 'ExemploController@index');
+
+// --------------------- //
+// Nomeado Rotas ------- //
+// --------------------- //
+
+Route::get('produtos', ['as'=>'produtos', function() {
+
+	echo Route::currentRouteName();
+	// return "Produtos";
+
+}]);
+
+// --------------------- //
+// Grupos de Rotas ----- //
+// --------------------- //
+
+Route::group(['prefix'=>'admin'], function() {
+	
+	get("categories", "AdminCategoriesController@index");
+	get("categories/editar/{category}", "AdminCategoriesController@editar");
+	get("products", "AdminProductsController@index");
+
+});
+

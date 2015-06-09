@@ -3,14 +3,30 @@
 use Treinamento\Category;
 use Treinamento\Http\Requests;
 use Treinamento\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
-class AdminCategoriesController extends Controller {
+	class AdminCategoriesController extends Controller {
 
-    public function index()
-    {
-        return Category::all();
+		private $categories;
+
+		public function __construct(Category $category)
+		{
+			$this->middleware('guest');
+			$this->categories = $category;
+		}
+
+	    public function index()
+	    {
+
+	        return Category::all();
+	        
+		}
+
+		public function editar(Category $category)
+		{
+						
+			return $category->all();
+
+		}
+
 	}
-
-}
