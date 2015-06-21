@@ -22,7 +22,7 @@ Route::controllers([
 
 Route::pattern('id', '[0-9]+');
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'ExemploController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('exemplo', 'ExemploController@index');
@@ -49,4 +49,3 @@ Route::group(['prefix'=>'admin'], function() {
 	get("products", "AdminProductsController@index");
 
 });
-
