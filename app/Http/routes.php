@@ -41,32 +41,4 @@ Route::controllers([
 // --------------------- //
 
 Route::pattern('id', '[0-9]+');
-
 Route::get('/', 'HomeController@index');
-Route::get('home', 'HomeController@index');
-
-Route::get('exemplo', 'ExemploController@index');
-
-// --------------------- //
-// Nomeando Rotas ------- //
-// --------------------- //
-
-Route::get('produtos', ['as'=>'produtos', function() {
-
-    echo Route::currentRouteName();
-    // return "Produtos";
-
-}]);
-
-// --------------------- //
-// Grupos de Rotas ----- //
-// --------------------- //
-
-Route::group(['prefix'=>'admin'], function() {
-    
-    get("categories", "AdminCategoriesController@index");
-    get("categories/editar/{category}", "AdminCategoriesController@editar");
-    get("products", "AdminProductsController@index");
-
-});
-
