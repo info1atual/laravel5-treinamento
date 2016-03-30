@@ -13,8 +13,23 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Model::unguard();
-
-		// $this->call('UserTableSeeder');
+		$this->call('UserTableSeeder');
 	}
+
+}
+
+class UserTableSeeder extends Seeder {
+
+    public function run()
+    {
+        DB::table('users')->delete();
+
+        Treinamento\User::create([
+            'name' => 'Wandry',
+            'password' => bcrypt('123456'),
+            'email' => 'wandryf@gmail.com'
+        ]);
+
+    }
 
 }

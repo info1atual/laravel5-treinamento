@@ -11,9 +11,29 @@
 |
 */
 
+Route::group(['prefix'=>'products'], function() {
+    get('/',            ['as'=>'products',            'uses'=>'ProductsController@index']);
+    get('/create',      ['as'=>'products.create',     'uses'=>'ProductsController@create']);
+    post('/store',      ['as'=>'products.store',      'uses'=>'ProductsController@store']);
+    get('{id}/destroy', ['as'=>'products.destroy',    'uses'=>'ProductsController@destroy']);
+    get('{id}/edit',    ['as'=>'products.edit',       'uses'=>'ProductsController@edit']);
+    put('{id}/update',  ['as'=>'products.update',     'uses'=>'ProductsController@update']);
+
+});
+
+Route::group(['prefix'=>'categories'], function() {
+    get('/',            ['as'=>'categories',            'uses'=>'CategoriesController@index']);
+    get('/create',      ['as'=>'categories.create',     'uses'=>'CategoriesController@create']);
+    post('/store',      ['as'=>'categories.store',      'uses'=>'CategoriesController@store']);
+    get('{id}/destroy', ['as'=>'categories.destroy',    'uses'=>'CategoriesController@destroy']);
+    get('{id}/edit',    ['as'=>'categories.edit',       'uses'=>'CategoriesController@edit']);
+    put('{id}/update',  ['as'=>'categories.update',     'uses'=>'CategoriesController@update']);
+
+});
+
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
 
 // --------------------- //
@@ -22,19 +42,19 @@ Route::controllers([
 
 Route::pattern('id', '[0-9]+');
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('exemplo', 'ExemploController@index');
 
 // --------------------- //
-// Nomeado Rotas ------- //
+// Nomeando Rotas ------- //
 // --------------------- //
 
 Route::get('produtos', ['as'=>'produtos', function() {
 
-	echo Route::currentRouteName();
-	// return "Produtos";
+    echo Route::currentRouteName();
+    // return "Produtos";
 
 }]);
 
@@ -43,10 +63,10 @@ Route::get('produtos', ['as'=>'produtos', function() {
 // --------------------- //
 
 Route::group(['prefix'=>'admin'], function() {
-	
-	get("categories", "AdminCategoriesController@index");
-	get("categories/editar/{category}", "AdminCategoriesController@editar");
-	get("products", "AdminProductsController@index");
+    
+    get("categories", "AdminCategoriesController@index");
+    get("categories/editar/{category}", "AdminCategoriesController@editar");
+    get("products", "AdminProductsController@index");
 
 });
 
