@@ -9,10 +9,10 @@
 
                 <div class="panel-body">
                     <div class="col-xs-6">
-                        <a href="{{ url('categories') }}" class="btn btn-primary btn-block well-sm">Categories</a>
+                        <a href="{{ url('admin/categories') }}" class="btn btn-primary btn-block well-sm">Categories</a>
                     </div>
                     <div class="col-xs-6">
-                        <a href="{{ url('products') }}" class="btn btn-primary btn-block well-sm">Products</a>
+                        <a href="{{ url('admin/products') }}" class="btn btn-primary btn-block well-sm">Products</a>
                     </div>
                 </div>
                 

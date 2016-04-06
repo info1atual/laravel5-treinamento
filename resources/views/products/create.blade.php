@@ -21,6 +21,8 @@
                 <div class="panel-body">
 
                     NEW
+
+                    <?php // dd($categories); ?>
                     <hr>
                     @if ($errors->any())
                         
@@ -32,14 +34,30 @@
 
                     @endif
 
-                    {!! Form::open(['url'=>'products/store']) !!}
+                    {!! Form::open(['url'=>'products/store', 'class'=>'form-horizontal']) !!}
+
+                    <div class="col-sm-4">
+
+                        <div class="form-group">
+                            
+                            {!! Form::label('category_id', 'Category') !!}
+                            {!! Form::select('category_id', $categories, null, ['class'=>'form-control']) !!}
+ 
+                        </div>
+                    </div>
                         
+                    <div class="col-sm-12">
+
                         <div class="form-group">
                             
                             {!! Form::label('name', 'Name') !!}
                             {!! Form::text('name', null, ['class'=>'form-control']) !!}
 
                         </div>
+
+                    </div>
+
+                    <div class="col-sm-12">
 
                         <div class="form-group">
                             
@@ -48,44 +66,44 @@
 
                         </div>
 
-                        <div class="row">
+                    </div>
+
+                    <div class="col-sm-4">
+                        
+                        <div class="form-group">
                             
-                            <div class="col-sm-4">
-                                
-                                <div class="form-group">
-                                    
-                                    {!! Form::label('price', 'Price') !!}
-                                    {!! Form::text('price', null, ['class'=>'form-control']) !!}
+                            {!! Form::label('price', 'Price') !!}
+                            {!! Form::text('price', null, ['class'=>'form-control']) !!}
 
-                                </div>
-
-                            </div>
-
-                            <div class="col-sm-4">
-                                
-                                <div class="checkbox">
-                                    <label>
-                                      {!! Form::checkbox('featured', '', null) !!} Featured
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                      {!! Form::checkbox('recommend', '', null) !!} Recommend
-                                    </label>
-                                </div>
-
-                            </div>
-                            
                         </div>
+
+                    </div>
+
+                    <div class="col-sm-4">
+                        
+                        <div class="checkbox">
+                            <label>
+                              {!! Form::checkbox('featured', '', null) !!} Featured
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                              {!! Form::checkbox('recommend', '', null) !!} Recommended
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-6 pull-right text-right">
 
                         <div class="form-group">
                             
-                            <div class="pull-right text-right">
-                                <a href="{{ route('products') }}" class="btn btn-default">Cancelar</a>&nbsp;
-                                {!! Form::submit('Add Product', ['class'=>'btn btn-primary pull-right']) !!}
-                            </div>
+                            <a href="{{ route('products') }}" class="btn btn-default">Cancelar</a>&nbsp;
+                            {!! Form::submit('Add Product', ['class'=>'btn btn-primary pull-right']) !!}
 
                         </div>
+
+                    </div>
 
                     {!! Form::close() !!}
                 </div>

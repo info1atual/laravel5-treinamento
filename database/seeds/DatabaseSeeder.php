@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Treinamento\User;
 
 class DatabaseSeeder extends Seeder {
 
@@ -14,6 +15,8 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 		$this->call('UserTableSeeder');
+		$this->call('CategoryTableSeeder');
+        $this->call('ProductTableSeeder');
 	}
 
 }
@@ -24,9 +27,15 @@ class UserTableSeeder extends Seeder {
     {
         DB::table('users')->delete();
 
-        Treinamento\User::create([
+        // User::create([
+        //     'name' => 'Wandry',
+        //     'password' => bcrypt('123456'),
+        //     'email' => 'wandryf@gmail.com'
+        // ]);
+
+        factory('Treinamento\User')->create([
             'name' => 'Wandry',
-            'password' => bcrypt('123456'),
+            'password' => Hash::make(123456),
             'email' => 'wandryf@gmail.com'
         ]);
 

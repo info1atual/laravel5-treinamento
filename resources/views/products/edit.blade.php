@@ -32,60 +32,75 @@
 
                     @endif
 
-                    {!! Form::open(['route'=>['products.update', $product->id], 'method'=>'put']) !!}
+                    {!! Form::open(['route'=>['products.update', $product->id], 'method'=>'put', 'class'=>'form-horizontal']) !!}
                         
-                        <div class="form-group">
-                            
-                            {!! Form::label('name', 'Name') !!}
-                            {!! Form::text('name', $product->name, ['class'=>'form-control']) !!}
+                        <div class="col-sm-4">
 
-                        </div>
-
-                        <div class="form-group">
-                            
-                            {!! Form::label('description', 'Description') !!}
-                            {!! Form::textarea('description', $product->description, ['class'=>'form-control']) !!}
-
-                        </div>
-
-                        <div class="row">
-                            
-                            <div class="col-sm-4">
+                            <div class="form-group">
                                 
-                                <div class="form-group">
-                                    
-                                    {!! Form::label('price', 'Price') !!}
-                                    {!! Form::text('price', Util::decimal2($product->price), ['class'=>'form-control']) !!}
+                                {!! Form::label('category_id', 'Category') !!}
+                                {!! Form::select('category_id', $categories, @$product->category_id, ['class'=>'form-control']) !!}
+     
+                            </div>
 
-                                </div>
+                        </div>
+
+                        <div class="col-sm-12">
+
+                            <div class="form-group">
+                                
+                                {!! Form::label('name', 'Name') !!}
+                                {!! Form::text('name', $product->name, ['class'=>'form-control']) !!}
 
                             </div>
 
-                            <div class="col-sm-4">
-                                
-                                <div class="checkbox">
-                                    <label>
-                                      {!! Form::checkbox('featured', (!empty($product->featured)) ? "1" : "0", $product->featured) !!} Featured
-                                    </label>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                      {!! Form::checkbox('recommend', (!empty($product->recommend)) ? "1" : "0", $product->recommend) !!} Recommend
-                                    </label>
-                                </div>
-
-                            </div>
-                            
                         </div>
 
-                        <div class="form-group">
+                        <div class="col-sm-12">
+
+                            <div class="form-group">
+                                
+                                {!! Form::label('description', 'Description') !!}
+                                {!! Form::textarea('description', $product->description, ['class'=>'form-control']) !!}
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-4">
                             
-                            <div class="pull-right text-right">
+                            <div class="form-group">
+                                
+                                {!! Form::label('price', 'Price') !!}
+                                {!! Form::text('price', Util::decimal2($product->price), ['class'=>'form-control']) !!}
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-4">
+                            
+                            <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('featured', (!empty($product->featured)) ? "1" : "0", $product->featured) !!} Featured
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                  {!! Form::checkbox('recommended', (!empty($product->recommended)) ? "1" : "0", $product->recommended) !!} Recommended
+                                </label>
+                            </div>
+
+                        </div>
+                        
+                        <div class="col-sm-6 pull-right text-right">
+
+                            <div class="form-group">
+                                
                                 <a href="{{ route('products') }}" class="btn btn-default">Cancelar</a>&nbsp;
                                 {!! Form::submit('Save Product', ['class'=>'btn btn-primary pull-right']) !!}
-                            </div>
 
-                        </div>
+                            </div>
 
                     {!! Form::close() !!}
                 </div>
