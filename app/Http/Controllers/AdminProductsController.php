@@ -1,10 +1,10 @@
-<?php namespace Treinamento\Http\Controllers;
+<?php namespace CodeCommerce\Http\Controllers;
 
-use Treinamento\Http\Requests;
-use Treinamento\Http\Controllers\Controller;
+use CodeCommerce\Http\Requests;
+use CodeCommerce\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Treinamento\Product;
+use CodeCommerce\Product;
 
 class AdminProductsController extends Controller {
 

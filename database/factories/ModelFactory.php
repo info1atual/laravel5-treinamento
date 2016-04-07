@@ -1,6 +1,6 @@
 <?php 
 
-$factory->define('Treinamento\User', function($faker) {
+$factory->define('CodeCommerce\User', function($faker) {
 
 	return [
 		'name'=>$faker->name,
@@ -11,7 +11,7 @@ $factory->define('Treinamento\User', function($faker) {
 
 });
 
-$factory->define('Treinamento\Category', function($faker) {
+$factory->define('CodeCommerce\Category', function($faker) {
 
 	return [
 		'name'=>$faker->word,
@@ -20,7 +20,7 @@ $factory->define('Treinamento\Category', function($faker) {
 
 });
 
-$factory->define('Treinamento\Product', function($faker) {
+$factory->define('CodeCommerce\Product', function($faker) {
 
 	return [
 		'name'=>$faker->word,

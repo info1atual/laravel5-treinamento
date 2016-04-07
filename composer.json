@@ -20,7 +20,7 @@
 			"database"
 		],
 		"psr-4": {
-			"Treinamento\\": "app/"
+			"CodeCommerce\\": "app/"
 		}
 	},
 	"autoload-dev": {

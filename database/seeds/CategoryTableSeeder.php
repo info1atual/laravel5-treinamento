@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Treinamento\Category;
+use CodeCommerce\Category;
 
 class CategoryTableSeeder extends Seeder
 {
@@ -12,7 +12,7 @@ class CategoryTableSeeder extends Seeder
 		
 		DB::table('categories')->truncate();
 
-		factory('Treinamento\Category', 10)->create();
+		factory('CodeCommerce\Category', 10)->create();
 
 	}
 }

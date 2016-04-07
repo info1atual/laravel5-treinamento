@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Treinamento\Product;
+use CodeCommerce\Product;
 use Faker\Factory as Faker;
 
 class ProductTableSeeder extends Seeder

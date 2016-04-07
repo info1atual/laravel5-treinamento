@@ -1,4 +1,4 @@
-<?php namespace Treinamento\Http\Controllers;
+<?php namespace CodeCommerce\Http\Controllers;
 
 class HomeController extends Controller {
 

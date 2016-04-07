@@ -1,6 +1,6 @@
-<?php namespace Treinamento\Services;
+<?php namespace CodeCommerce\Services;
 
-use Treinamento\User;
+use CodeCommerce\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

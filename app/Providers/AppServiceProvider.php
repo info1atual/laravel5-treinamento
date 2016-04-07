@@ -1,4 +1,4 @@
-<?php namespace Treinamento\Providers;
+<?php namespace CodeCommerce\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind(
 			'Illuminate\Contracts\Auth\Registrar',
-			'Treinamento\Services\Registrar'
+			'CodeCommerce\Services\Registrar'
 		);
 	}
 

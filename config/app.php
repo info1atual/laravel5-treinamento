@@ -140,11 +140,11 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'Treinamento\Providers\AppServiceProvider',
-		'Treinamento\Providers\BusServiceProvider',
-		'Treinamento\Providers\ConfigServiceProvider',
-		'Treinamento\Providers\EventServiceProvider',
-		'Treinamento\Providers\RouteServiceProvider',
+		'CodeCommerce\Providers\AppServiceProvider',
+		'CodeCommerce\Providers\BusServiceProvider',
+		'CodeCommerce\Providers\ConfigServiceProvider',
+		'CodeCommerce\Providers\EventServiceProvider',
+		'CodeCommerce\Providers\RouteServiceProvider',
 
 	],
 
@@ -195,7 +195,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'Html'		=> 'Illuminate\Html\HtmlFacade',
-		'Util'		=> 'Treinamento\Libraries\Util'
+		'Util'		=> 'CodeCommerce\Libraries\Util'
 
 	],
 

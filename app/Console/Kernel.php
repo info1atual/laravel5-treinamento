@@ -1,4 +1,4 @@
-<?php namespace Treinamento\Console;
+<?php namespace CodeCommerce\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -11,7 +11,7 @@ class Kernel extends ConsoleKernel {
 	 * @var array
 	 */
 	protected $commands = [
-		'Treinamento\Console\Commands\Inspire',
+		'CodeCommerce\Console\Commands\Inspire',
 	];
 
 	/**

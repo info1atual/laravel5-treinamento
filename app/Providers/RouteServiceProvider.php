@@ -1,4 +1,4 @@
-<?php namespace Treinamento\Providers;
+<?php namespace CodeCommerce\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'Treinamento\Http\Controllers';
+	protected $namespace = 'CodeCommerce\Http\Controllers';
 
 	/**
 	 * Define your route model bindings, pattern filters, etc.
@@ -24,7 +24,7 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		$router->model('category', 'Treinamento\Category');
+		$router->model('category', 'CodeCommerce\Category');
 	}
 
 	/**

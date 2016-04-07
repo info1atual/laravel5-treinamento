@@ -1,6 +1,6 @@
-<?php namespace Treinamento\Http\Controllers;
+<?php namespace CodeCommerce\Http\Controllers;
 	
-use Treinamento\Category;
+use CodeCommerce\Category;
 
 	class ExemploController extends Controller {
 

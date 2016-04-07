@@ -1,14 +1,14 @@
 <?php
 
-namespace Treinamento\Http\Controllers;
+namespace CodeCommerce\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Treinamento\Http\Requests;
-use Treinamento\Http\Controllers\Controller;
-use Treinamento\Product;
-use Treinamento\ProductImage;
-use Treinamento\Category;
+use CodeCommerce\Http\Requests;
+use CodeCommerce\Http\Controllers\Controller;
+use CodeCommerce\Product;
+use CodeCommerce\ProductImage;
+use CodeCommerce\Category;
 use Util;
 use Storage;
 use File;

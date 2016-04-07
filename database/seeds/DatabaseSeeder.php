@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Treinamento\User;
+use CodeCommerce\User;
 
 class DatabaseSeeder extends Seeder {
 
@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder {
         //     'email' => 'wandryf@gmail.com'
         // ]);
 
-        factory('Treinamento\User')->create([
+        factory('CodeCommerce\User')->create([
             'name' => 'Wandry',
             'password' => Hash::make(123456),
             'email' => 'wandryf@gmail.com'

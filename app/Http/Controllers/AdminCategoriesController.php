@@ -1,8 +1,8 @@
-<?php namespace Treinamento\Http\Controllers;
+<?php namespace CodeCommerce\Http\Controllers;
 
-use Treinamento\Category;
-use Treinamento\Http\Requests;
-use Treinamento\Http\Controllers\Controller;
+use CodeCommerce\Category;
+use CodeCommerce\Http\Requests;
+use CodeCommerce\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 	class AdminCategoriesController extends Controller {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Treinamento;
+namespace CodeCommerce;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,7 +13,7 @@ class ProductImage extends Model
 
     public function product()
     {
-    	return $this->belongsTo('Treinamento\Product');
+    	return $this->belongsTo('CodeCommerce\Product');
     }
 
 }

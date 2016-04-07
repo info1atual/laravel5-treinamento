@@ -1,8 +1,8 @@
 <?php
 
-namespace Treinamento\Http\Requests;
+namespace CodeCommerce\Http\Requests;
 
-use Treinamento\Http\Requests\Request;
+use CodeCommerce\Http\Requests\Request;
 
 class ProductRequest extends Request
 {

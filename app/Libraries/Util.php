@@ -1,6 +1,6 @@
 <?php 
 	
-namespace Treinamento\Libraries;
+namespace CodeCommerce\Libraries;
 
 /**
 * 

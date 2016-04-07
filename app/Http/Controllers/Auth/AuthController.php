@@ -1,9 +1,9 @@
-<?php namespace Treinamento\Http\Controllers\Auth;
+<?php namespace CodeCommerce\Http\Controllers\Auth;
 
-use Treinamento\Http\Controllers\Controller;
+use CodeCommerce\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-use Treinamento\User;
+use CodeCommerce\User;
 use Validator;
 
 class AuthController extends Controller {
