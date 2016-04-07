@@ -53,14 +53,14 @@ class ProductsController extends Controller
      */
     public function store(Requests\ProductRequest $request)
     {
-        // dd($request);
+        // dd($request->recommended);
         $product = $this->product->create([
             'category_id'=>$request->category_id,
             'name'=>$request->name,
             'description'=>$request->description,
             'price'=>Util::toFloat($request->price),
             'featured'=>($request->has('featured')) ? true : false,
-            'recommended'=>($request->has('recommended')) ? true : false,
+            'recommended'=>($request->has('recommended') || $request->recommended == 1) ? true : false,
             ]);
         return redirect()->route('products');
     }

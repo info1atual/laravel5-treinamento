@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="pull-right text-right">
-                <a href="{{ url('categories') }}" class="btn btn-primary">Back</a>                
+                <a href="{{ route('categories') }}" class="btn btn-primary">Back</a>                
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
 
                     @endif
 
-                    {!! Form::open(['url'=>'categories/store']) !!}
+                    {!! Form::open(['route'=>'categories.store']) !!}
                         
                         <div class="form-group">
                             

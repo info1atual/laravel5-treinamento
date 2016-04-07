@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="pull-right text-right">
-                <a href="{{ url('products') }}" class="btn btn-primary">Back</a>                
+                <a href="{{ route('products') }}" class="btn btn-primary">Back</a>                
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
 
                     @endif
 
-                    {!! Form::open(['url'=>'products/store', 'class'=>'form-horizontal']) !!}
+                    {!! Form::open(['route'=>'products.store', 'class'=>'form-horizontal']) !!}
 
                     <div class="col-sm-4">
 
@@ -83,12 +83,12 @@
                         
                         <div class="checkbox">
                             <label>
-                              {!! Form::checkbox('featured', '', null) !!} Featured
+                              {!! Form::checkbox('featured', '1', '') !!} Featured
                             </label>
                         </div>
                         <div class="checkbox">
                             <label>
-                              {!! Form::checkbox('recommend', '', null) !!} Recommended
+                              {!! Form::checkbox('recommended', '1', '') !!} Recommended
                             </label>
                         </div>
 
