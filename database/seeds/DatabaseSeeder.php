@@ -15,30 +15,30 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 		$this->call('UserTableSeeder');
-		$this->call('CategoryTableSeeder');
-        $this->call('ProductTableSeeder');
+		// $this->call('CategoryTableSeeder');
+        // $this->call('ProductTableSeeder');
 	}
 
 }
 
-class UserTableSeeder extends Seeder {
+// class UserTableSeeder extends Seeder {
 
-    public function run()
-    {
-        DB::table('users')->delete();
+//     public function run()
+//     {
+//         DB::table('users')->delete();
 
-        // User::create([
-        //     'name' => 'Wandry',
-        //     'password' => bcrypt('123456'),
-        //     'email' => 'wandryf@gmail.com'
-        // ]);
+//         // User::create([
+//         //     'name' => 'Wandry',
+//         //     'password' => bcrypt('123456'),
+//         //     'email' => 'wandryf@gmail.com'
+//         // ]);
 
-        factory('CodeCommerce\User')->create([
-            'name' => 'Wandry',
-            'password' => Hash::make(123456),
-            'email' => 'wandryf@gmail.com'
-        ]);
+//         factory('CodeCommerce\User')->create([
+//             'name' => 'Wandry',
+//             'password' => Hash::make(123456),
+//             'email' => 'wandryf@gmail.com'
+//         ]);
 
-    }
+//     }
 
-}
+// }
