@@ -49,6 +49,13 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <div class="text-center">
+                        
+                        {!! $categories->render() !!}
+
+                    </div>
+
                 </div>
             </div>
         </div>

@@ -30,7 +30,7 @@ class ProductsController extends Controller
     public function index()
     {
         $products = $this->product->with('category')->orderby('id', 'desc')
-            ->paginate(10);
+            ->paginate(15);
         // dd($products);
         return view('products.index', compact('products'));
     }

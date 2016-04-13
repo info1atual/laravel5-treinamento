@@ -21,7 +21,8 @@ class CategoriesController extends Controller {
      */
     public function index()
     {
-        $categories = $this->category->orderby('id', 'desc')->get();
+        $categories = $this->category->orderby('id', 'desc')
+            ->paginate(15);
         return view('categories.index', compact('categories'));
     }
 
