@@ -12,6 +12,9 @@ use CodeCommerce\Category;
 use Util;
 use Storage;
 use File;
+use Aws\S3\S3Client;
+use League\Flysystem\AwsS3v3\AwsS3Adapter;
+use League\Flysystem\Filesystem;
 
 class ProductsController extends Controller
 {
@@ -143,7 +146,13 @@ class ProductsController extends Controller
             'product_id'=>$id,
             'extension'=>$extension
             ]);
-        Storage::disk('public_local')->put($image->id.'.'.$extension, File::get($file));
+        // Storage::disk('public_local')->put($image->id.'.'.$extension, File::get($file));
+        $diretorio = 'treinamento/img/products';
+        Storage::disk('s3')->put($diretorio.DIRECTORY_SEPARATOR.$image->id.'.'.$extension, File::get($file));
+        // $s3 = \Storage::disk('s3');
+        // $filePath = $diretorio . DIRECTORY_SEPARATOR . $image->id.'.'.$extension;
+        // $s3->put($filePath, file_get_contents($file), 'public');
+
         return redirect()->route('products.images', ['id'=>$id]);
 
     }

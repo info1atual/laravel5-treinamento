@@ -136,6 +136,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
+		'GrahamCampbell\Flysystem\FlysystemServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -195,7 +196,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'Html'		=> 'Illuminate\Html\HtmlFacade',
-		'Util'		=> 'CodeCommerce\Libraries\Util'
+		'Util'		=> 'CodeCommerce\Libraries\Util',
+		'Flysystem' => 'GrahamCampbell\Flysystem\Facades\Flysystem'
 
 	],
 

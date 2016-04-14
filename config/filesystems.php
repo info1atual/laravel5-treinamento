@@ -57,10 +57,10 @@ return [
 
 		's3' => [
 			'driver' => 's3',
-			'key'    => 'your-key',
-			'secret' => 'your-secret',
-			'region' => 'your-region',
-			'bucket' => 'your-bucket',
+			'key'    => 'AKIAJNRX5M6YY6TQXDNA',
+			'secret' => 'MBXei8rZfEYQg/04NRdJk1GlH+oIsyRUfCkf+bVn',
+			'region' => 'Brazil',
+			'bucket' => 'wandry.moura',
 		],
 
 		'rackspace' => [
