@@ -38,8 +38,6 @@
                             <tr>
                                 <td class="text-center">{{ $image->id }}</td>
                                 <td>
-                                    <?php // ?>
-                                    
                                     <img width="80px" src="{{ url('uploads' . '/' . $image->id . '.' . $image->extension) }}" alt="">
                                 </td>
                                 <td class="text-center">{{ $image->extension }}</td>

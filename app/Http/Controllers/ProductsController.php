@@ -127,7 +127,7 @@ class ProductsController extends Controller
 
     public function images($id)
     {
-        $product = $this->product->find($id);
+        $product = $this->product->orderby('id', 'desc')->find($id);
         // dd($product);
         return view('products.images', compact('product'));
     }
@@ -146,13 +146,7 @@ class ProductsController extends Controller
             'product_id'=>$id,
             'extension'=>$extension
             ]);
-        // Storage::disk('public_local')->put($image->id.'.'.$extension, File::get($file));
-        $diretorio = 'treinamento/img/products';
-        Storage::disk('s3')->put($diretorio.DIRECTORY_SEPARATOR.$image->id.'.'.$extension, File::get($file));
-        // $s3 = \Storage::disk('s3');
-        // $filePath = $diretorio . DIRECTORY_SEPARATOR . $image->id.'.'.$extension;
-        // $s3->put($filePath, file_get_contents($file), 'public');
-
+        Storage::disk('public_local')->put($image->id.'.'.$extension, File::get($file));
         return redirect()->route('products.images', ['id'=>$id]);
 
     }
