@@ -92,6 +92,23 @@
                             </div>
 
                         </div>
+
+                        <div class="col-sm-12">
+
+                            <div class="form-group">
+                                <?php $t = ''; ?>
+                                @foreach ($tags as $tag) 
+                                    <?php 
+                                        $t = $t . $tag . ', '; 
+                                    ?>
+                                @endforeach
+
+                                {!! Form::label('tags', 'Tags') !!}
+                                {!! Form::textarea('tags', $t, ['class'=>'form-control', 'rows'=>4]) !!}
+
+                            </div>
+
+                        </div>
                         
                         <div class="col-sm-6 pull-right text-right">
 
@@ -101,6 +118,8 @@
                                 {!! Form::submit('Save Product', ['class'=>'btn btn-primary pull-right']) !!}
 
                             </div>
+
+                        </div>
 
                     {!! Form::close() !!}
                 </div>
