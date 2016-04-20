@@ -8,11 +8,12 @@
 | Here is where you can register all of the routes for an application.
 | It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
-|
+|   
 */
 
 Route::group(['prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
 
+    Route::get('/', 'HomeController@index');
     Route::group(['prefix'=>'products'], function() {
         get('/',            ['as'=>'products',            'uses'=>'ProductsController@index']);
         get('/create',      ['as'=>'products.create',     'uses'=>'ProductsController@create']);
@@ -38,7 +39,7 @@ Route::group(['prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
         get('{id}/product',         ['as'=>'products.images',       'uses'=>'ProductsController@images']);
         get('create/{id}/product',  ['as'=>'products.images.create','uses'=>'ProductsController@createImage']);
         post('store/{id}/product',  ['as'=>'products.images.store', 'uses'=>'ProductsController@storeImage']);
-        get('destroy/{id}/image',  ['as'=>'products.images.destroy','uses'=>'ProductsController@destroyImage']);
+        get('destroy/{id}/image',   ['as'=>'products.images.destroy','uses'=>'ProductsController@destroyImage']);
 
     });
 
@@ -54,5 +55,6 @@ Route::controllers([
 // --------------------- //
 
 Route::pattern('id', '[0-9]+');
-Route::get('/', 'HomeController@index');
+// Route::get('/',     'StoreController@index');
+Route::get('/',     'HomeController@index');
 Route::get('/home', 'HomeController@index');

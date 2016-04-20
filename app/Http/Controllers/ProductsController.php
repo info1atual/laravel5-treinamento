@@ -57,7 +57,7 @@ class ProductsController extends Controller
      */
     public function store(Requests\ProductRequest $request)
     {
-        dd($request);
+        // dd($request);
         $product = $this->product->create([
             'category_id'=>$request->category_id,
             'name'=>$request->name,
@@ -66,8 +66,14 @@ class ProductsController extends Controller
             'featured'=>($request->has('featured')) ? true : false,
             'recommended'=>($request->has('recommended') || $request->recommended == 1) ? true : false,
             ]);
+        
         if ($request->has('tags')) {
-            $product->tags->attach($request->tags);
+            $arrayTags = explode(',', $request->tags);
+            foreach ($arrayTags as $tag) {
+                $t = Tag::create(['name'=>$tag]);
+                $product->tags()->attach($t->id);
+            }
+            
         }
         return redirect()->route('products');
     }
@@ -105,9 +111,7 @@ class ProductsController extends Controller
      */
     public function update(Requests\ProductRequest $request, $id)
     {
-        $teste[] = $request->tags;
-        dd ($teste);
-        dd($request);
+        // dd($request);
         $product = $this->product->find($id);
         $product->category_id = $request->category_id;
         $product->name = $request->name;
@@ -116,8 +120,10 @@ class ProductsController extends Controller
         $product->featured = ($request->has('featured') || $request->featured == 1) ? true : false;
         $product->recommended = ($request->has('recommended') || $request->recommended == 1) ? true : false;
         $product->save();
+
         if ($request->has('tags')) {
-            $product->tags->attach($request->tags);            
+            $tags = $this->tagToArray($request->tags);
+            $product->tags()->sync($tags);
         }
         return redirect()->route('products');
 
@@ -171,4 +177,21 @@ class ProductsController extends Controller
         $image->delete();            
         return redirect()->route('products.images', ['id'=>$image->product->id]);
     }
+
+    private function tagToArray($tags)
+    {
+
+        $tags = explode(",", $tags);
+        $tags = array_map('trim', $tags);
+
+        $tagCollection = [];
+        foreach ($tags as $tag) {
+            $t = Tag::firstOrCreate(['name' => $tag]);
+            array_push($tagCollection, $t->id);
+        }
+
+        return $tagCollection;
+
+    }
+
 }
