@@ -98,14 +98,9 @@
 
                         <div class="form-group">
                         <?php $t = ''; ?>
-                            @foreach ($tags as $tag) 
-                                <?php 
-                                    $t = $t . $tag . ', '; 
-                                ?>
-                            @endforeach
 
                             {!! Form::label('tags', 'Tags') !!}
-                            {!! Form::textarea('tags', $t, ['class'=>'form-control', 'rows'=>4]) !!}
+                            {!! Form::textarea('tags', null, ['class'=>'form-control', 'rows'=>4]) !!}
 
                         </div>
 
