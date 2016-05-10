@@ -110,7 +110,7 @@ class ProductsController extends Controller
     {
 
         $product = $this->product->find($id);
-        $tags = $product->tags->lists('name');
+        $tags = $product->tags->lists('name')->toArray();
         $categories = $category->lists('name', 'id');
         return view('products.edit', compact('product', 'tags', 'categories'));
 

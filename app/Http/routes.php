@@ -55,6 +55,5 @@ Route::controllers([
 // --------------------- //
 
 Route::pattern('id', '[0-9]+');
-// Route::get('/',     'StoreController@index');
-Route::get('/',     'HomeController@index');
-Route::get('/home', 'HomeController@index');
+Route::get('/',     'StoreController@index');
+Route::get('/home', 'StoreController@index');
