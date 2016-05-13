@@ -10,10 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |   
 */
+Route::group(['prefix'=>'store', 'where'=>['id'=>'[0-9]+']], function() {
+
+    Route::get('{category}/by-category',      ['as'=>'products.by.category', 'uses'=>'StoreController@byCategory']);
+
+});
 
 Route::group(['prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
 
     Route::get('/', 'HomeController@index');
+
     Route::group(['prefix'=>'products'], function() {
         get('/',            ['as'=>'products',            'uses'=>'ProductsController@index']);
         get('/create',      ['as'=>'products.create',     'uses'=>'ProductsController@create']);

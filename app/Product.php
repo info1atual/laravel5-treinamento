@@ -44,4 +44,14 @@ class Product extends Model {
         return implode(',', $tags);
     }
 
+    public function scopeFeatured($query)
+    {
+        $query->with('images')->where('featured', 1);
+    }
+    
+    public function scopeRecommended($query)
+    {
+        $query->with('images')->where('recommended', 1);
+    }
+
 }
