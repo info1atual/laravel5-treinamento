@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use CodeCommerce\Http\Requests;
 use CodeCommerce\Http\Controllers\Controller;
 use CodeCommerce\Category;
+use CodeCommerce\Product;
 
 class StoreController extends Controller
 {
@@ -14,6 +15,8 @@ class StoreController extends Controller
     public function index()
     {
     	$categories = Category::all();
-        return view('store.index', compact('categories'));
+    	$pFeatured = Product::where('featured', 1)->get();
+    	dd($pFeatured);
+        return view('store.index', compact('categories', 'pFeatured'));
     }
 }

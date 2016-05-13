@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shop</title>
-   
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
