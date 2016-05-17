@@ -7,13 +7,7 @@
     <meta name="author" content="">
     <title>Home | E-Shop</title>
 
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-
+    <link href="{{ asset(elixir('css/all.css')) }}" rel="stylesheet">
 
 </head><!--/head-->
 
@@ -48,7 +42,7 @@
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="/"><span>CodeCommerce</span></a>
+                        <a href="{{ url() }}"><span>CodeCommerce</span></a>
                     </div>
 
                 </div>
@@ -136,9 +130,6 @@
 
 <footer id="footer"><!--Footer-->
 
-
-
-
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
@@ -150,13 +141,7 @@
 
 </footer><!--/Footer-->
 
-
-
-<script src="{{ asset('js/jquery.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
-<script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
+<script src="{{ asset(elixir('js/all.js')) }}"></script>
 
 </body>
 </html>
