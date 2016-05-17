@@ -10,11 +10,25 @@
 | and give it the controller to call when that URI is requested.
 |   
 */
+
+// --------------------- //
+// Páginas da Loja //
+// --------------------- //
+
 Route::group(['prefix'=>'store', 'where'=>['id'=>'[0-9]+']], function() {
 
-    Route::get('{category}/by-category',      ['as'=>'products.by.category', 'uses'=>'StoreController@byCategory']);
+    Route::get('{category}/by-category',    ['as'=>'store.category', 'uses'=>'StoreController@category']);
+    Route::get('{product}/product',     ['as'=>'store.product', 'uses'=>'StoreController@product']);
 
 });
+
+// --------------------- //
+// Home da Loja          //
+// --------------------- //
+
+Route::get('/',     'StoreController@index');
+Route::get('/home', 'StoreController@index');
+Route::get('/store', 'StoreController@index');
 
 Route::group(['prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
 
@@ -61,5 +75,3 @@ Route::controllers([
 // --------------------- //
 
 Route::pattern('id', '[0-9]+');
-Route::get('/',     'StoreController@index');
-Route::get('/home', 'StoreController@index');

@@ -14,20 +14,29 @@ class StoreController extends Controller
     
     public function index()
     {
-    	$categories = Category::all();
+    	
+        $categories = Category::all();
     	$pFeatured = Product::featured()->get();
     	$pRecommended = Product::recommended()->get();
         return view('store.index', compact('categories', 'pFeatured', 'pRecommended'));
+
     }
 
-    public function byCategory($category)
+    public function category($category)
     {
-    	$categories = Category::all();
-    	$products = Product::with('images')->where('category_id', $category->id);
-    	$pFeatured = Product::featured()->where('category_id', $category->id)->get();
-    	$pRecommended = Product::recommended()->where('category_id', $category->id)->get();
-    	// dd($category);
-    	return view('store.index', compact('categories', 'products', 'pFeatured', 'pRecommended'));
+        
+        $categories = Category::all();
+        $products = Product::ofCategory($category->id)->get();
+    	// dd($id);
+    	return view('store.category', compact('categories', 'products', 'category'));
+
     }
 
+    public function product($id)
+    {
+        $categories = Category::all();
+        $product = Product::find($id);
+        return view('store.product', compact('categories', 'product'));
+           
+    }
 }

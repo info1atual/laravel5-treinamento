@@ -54,4 +54,9 @@ class Product extends Model {
         $query->with('images')->where('recommended', 1);
     }
 
+    public function scopeOfCategory($query, $type)
+    {
+        $query->with('images')->where('category_id', $type);
+    }
+
 }
