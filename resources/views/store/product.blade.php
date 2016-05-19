@@ -45,13 +45,22 @@
                     <h2>{{ $product->name }}</h2>
 
                     <p>{{ $product->description }}</p>
-                                    <span>
-                                        <span>{{ number_format($product->price, 2, ',','.') }}</span>
-                                            <a href="http://commerce.dev:10088/cart/2/add" class="btn btn-fefault cart">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                Adicionar no Carrinho
-                                            </a>
-                                    </span>
+                    <span>
+                        <span>{{ number_format($product->price, 2, ',','.') }}</span>
+                            <a href="http://commerce.dev:10088/cart/2/add" class="btn btn-fefault cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                Adicionar no Carrinho
+                            </a>
+                    </span>
+
+                    <p>
+
+                        @foreach($product->tags as $tag)
+                            <a href="{{ route('store.tag', ['id'=>$tag->id]) }}" class="label label-primary">{{ $tag->name }}</a>
+                        @endforeach
+                        
+                    </p>
+                    
                 </div>
                 <!--/product-information-->
             </div>

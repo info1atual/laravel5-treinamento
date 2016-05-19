@@ -18,7 +18,8 @@
 Route::group(['prefix'=>'store', 'where'=>['id'=>'[0-9]+']], function() {
 
     Route::get('{category}/by-category',    ['as'=>'store.category', 'uses'=>'StoreController@category']);
-    Route::get('{product}/product',     ['as'=>'store.product', 'uses'=>'StoreController@product']);
+    Route::get('{product}/product',         ['as'=>'store.product', 'uses'=>'StoreController@product']);
+    Route::get('{tag}/tag',                 ['as'=>'store.tag', 'uses'=>'StoreController@tag']);
 
 });
 

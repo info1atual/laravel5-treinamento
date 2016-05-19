@@ -1,5 +1,5 @@
 
-	@foreach ($products as $product)
+	@foreach ($pFeatured as $product)
 
         <div class="col-sm-4">
             <div class="product-image-wrapper">
@@ -33,7 +33,7 @@
     
     @endforeach
 
-    @foreach ($products as $product)
+    @foreach ($pRecommended as $product)
 
         <div class="col-sm-4">
             <div class="product-image-wrapper">
@@ -66,3 +66,4 @@
         </div>
 
     @endforeach
+    
