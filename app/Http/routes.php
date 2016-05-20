@@ -20,6 +20,8 @@ Route::group(['prefix'=>'store', 'where'=>['id'=>'[0-9]+']], function() {
     Route::get('{category}/by-category',    ['as'=>'store.category', 'uses'=>'StoreController@category']);
     Route::get('{product}/product',         ['as'=>'store.product', 'uses'=>'StoreController@product']);
     Route::get('{tag}/tag',                 ['as'=>'store.tag', 'uses'=>'StoreController@tag']);
+    Route::get('cart',                      ['as'=>'cart', 'uses'=>'CartController@index']);
+    Route::get('cart/{id}/add',             ['as'=>'cart.add', 'uses'=>'CartController@add']);
 
 });
 
@@ -30,6 +32,8 @@ Route::group(['prefix'=>'store', 'where'=>['id'=>'[0-9]+']], function() {
 Route::get('/',     'StoreController@index');
 Route::get('/home', 'StoreController@index');
 Route::get('/store', 'StoreController@index');
+Route::get('/login', ['as'=>'login']);
+Route::get('/logout', ['as'=>'logout']);
 
 Route::group(['prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
 
