@@ -14,14 +14,28 @@ class Cart
 
     }
 
-    public function add($id, $name, $price)
+    public function add($id, $idProduct, $name, $price, $qtd=0, $img="")
     {
     	
     	$this->items += [
     		$id = [
-	    		'qtd'=>isset($items[$id]['qtd']) ? $this->items[$id]['qtd']++ : 1,
+    			'idProduct'=>$idProduct,
+    			'img'=>$img,
+	    		'qtd'=>isset($this->items[$id]['qtd']) ? $this->items[$id]['qtd']++ : 1,
 	    		'price'=>$price,
 	    		'name'=>$name
+    		],
+    	];
+
+    	return $this->items;
+    }
+
+    public function update($id, $qtd=0)
+    {
+    	
+    	$this->items += [
+    		$id = [
+	    		'qtd'=>$this->items[$id]['qtd'] = $qtd,
     		],
     	];
 
@@ -46,9 +60,11 @@ class Cart
     {
     	
     	$total = 0;
-    	foreach ($this->items as $items) {
-    		$total += $this->items['qtd'] * $this->items['price'];
+    	// dd($this->items['qtd']);
+    	foreach ($this->items as $item) {
+    		$total += $item['qtd'] * $item['price'];
     	}
     	return $total;
     }
+
 }

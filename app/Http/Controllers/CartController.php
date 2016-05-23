@@ -29,11 +29,11 @@ class CartController extends Controller
      */
     public function index(Request $request)
     {
-        dd(Session::get('cart'));
-        $request->session()->flush();
+        // $request->session()->flush();
         if (!Session::has('cart')) {
             Session::set('cart', $this->cart);
         }
+        // dd(Session::get('cart'));
         return view('store.cart', ['cart'=>Session::get('cart')]);
     }
 
@@ -45,17 +45,15 @@ class CartController extends Controller
      */
     public function add($id)
     {
-        
         if (Session::has('cart')) {
             $cart = Session::get('cart');
         } else {
             $cart = $this->cart;
         }
         $product = Product::find($id);
-        $cart->add($id, $product->name, $product->price);
+        $cart->add($id, $product->id, $product->name, $product->price, @$product->images->first()->product_id.'.'.@$product->images->first()->extension);
         Session::set('cart', $cart);
         return redirect()->route('cart');
-
     }
 
     /**
@@ -64,9 +62,14 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getCart()
     {
-        //
+        if (Session::has('cart')) {
+            $cart = Session::get('cart');
+        } else {
+            $cart = $this->cart;
+        }
+        return $cart;
     }
 
     /**
@@ -87,9 +90,16 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id, $qtd)
     {
-        //
+        if (Session::has('cart')) {
+            $cart = Session::get('cart');
+        } else {
+            $cart = $this->cart;
+        }
+        $cart->update($id, $qtd);
+        Session::set('cart', $cart);
+        return redirect()->route('cart');
     }
 
     /**
@@ -100,6 +110,9 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = $this->getCart();
+        $cart->remove($id);
+        Session::set('cart', $cart);
+        return redirect()->route('cart');
     }
 }

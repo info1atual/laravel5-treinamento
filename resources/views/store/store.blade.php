@@ -135,6 +135,7 @@
 </footer><!--/Footer-->
 
 <script src="{{ asset(elixir('js/all.js')) }}"></script>
+@yield('scripts')
 
 </body>
 </html>

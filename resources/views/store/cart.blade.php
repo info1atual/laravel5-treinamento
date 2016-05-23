@@ -13,7 +13,7 @@
 
     		<div class="table-responsive cart_info">
     			
-    			<table class="table-condensed">
+    			<table class="table table-condensed">
     				
     				<thead>
     					<tr class="cart_menu">
@@ -26,25 +26,36 @@
     					</tr>	
     				</thead>
 
-    				<tbody>
+    				<tbody id="itens">
     					
     					@forelse ($cart->all() as $k => $item)
-    					<tr>
+    					<tr id="itens-linha">
     						<td class="cart_product">
-					            <img src="{{ asset('images/no-img.jpg') }}" alt="" />
+    							@if (!empty($item['img']))
+					            	<img src="{{ asset('uploads/'.@$item['img']) }}" width="30px" alt="" />
+				            	@else
+				            		<img src="{{ asset('images/no-img.jpg') }}" width="30px" alt="" />
+				            	@endif
     						</td>
-    						<td class="cart_description">
-								<h4>{{ $item['name'] }}</h4>
-								<span>Código: {{ $k }}</span>
+    						<td class="cart_description col-xs-5">
+								<a href="{{ route('store.product', $item['idProduct']) }}"><h4>{{ $item['name'] }}</h4></a>
+								<span>Código: {{ $item['idProduct'] }}</span>
     						</td>
-    						<td class="cart_quantity">
-								<a href="{{ route('store.product') }}">{{ $item['qtd'] }}</a>
+    						<td class="cart_quantity col-xs-2" id="area-quantidade">
+    							<div class="form-group">
+									<input type="number" class="form-control text-center" id="quantidade" value="{{ $item['qtd'] }}">
+    							</div>
 							</td>
-							<td class="cart_price">
-								<a href="{{ route('store.product') }}">R$ {{ $item['price'] }}</a>
+							<td>
+								<a href="#" id="atualizar" data-id="{{ $k }}" class="cart_update">
+									Atualizar
+    							</a>
 							</td>
-    						<td class="cart_delete">
-    							<a href="#" class="cart_quantity_delete">
+							<td class="cart_price text-right">
+								<h4>R$ {{ number_format($item['price'],2,",",".") }}</h4>
+							</td>
+    						<td class="cart_delete text-center">
+    							<a href="{{ route('cart.remove', $k) }}" class="cart_quantity_delete">
 									Excluir
     							</a>
     						</td>
@@ -58,13 +69,53 @@
 							</tr>
 
     					@endforelse
+
+    					<tr>
+    						
+    						<td colspan="6">
+    							
+    							<div class="text-right">
+    								
+    								<span>Total: R$ </span>
+    								{{ number_format($cart->getTotal(), 2,",",".") }}
+
+    								<a href="#" class="btn btn-success">Fecha a Conta</a>
+
+    							</div>
+
+    						</td>
+
+    					</tr>
+
     				</tbody>
 
     			</table>
+
     		</div>
     		
     	</div>
 
     </section>
+
+@stop
+
+@section('scripts')
+	
+	<script>
+    	
+    	jQuery(document).ready(function($) {
+	    		
+	    	$('#itens').on('click', '#atualizar', function(e) {
+	    		e.preventDefault();
+
+	    		id = $(this).data('id')
+	    		qtd = $(this).parent().parent().children('#area-quantidade').children().children('#quantidade').val()
+	    		window.location.href = '{{ url() }}' + '/' + 'store/cart/' + id + '/' + qtd + '/update' 
+
+	    	});
+	    	
+    	});
+
+    </script>
 
 @stop

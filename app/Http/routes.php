@@ -22,6 +22,8 @@ Route::group(['prefix'=>'store', 'where'=>['id'=>'[0-9]+']], function() {
     Route::get('{tag}/tag',                 ['as'=>'store.tag', 'uses'=>'StoreController@tag']);
     Route::get('cart',                      ['as'=>'cart', 'uses'=>'CartController@index']);
     Route::get('cart/{id}/add',             ['as'=>'cart.add', 'uses'=>'CartController@add']);
+    Route::get('cart/{id}/{qtd}/update',    ['as'=>'cart.update', 'uses'=>'CartController@update']);
+    Route::get('cart/{id}/remove',          ['as'=>'cart.remove', 'uses'=>'CartController@destroy']);
 
 });
 
