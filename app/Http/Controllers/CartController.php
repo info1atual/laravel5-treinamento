@@ -51,7 +51,7 @@ class CartController extends Controller
             $cart = $this->cart;
         }
         $product = Product::find($id);
-        $cart->add($id, $product->id, $product->name, $product->price, @$product->images->first()->product_id.'.'.@$product->images->first()->extension);
+        $cart->add($id, $product->name, $product->price, isset($product->images->first()->id)?$product->images->first()->id.'.'.$product->images->first()->extension:"");
         Session::set('cart', $cart);
         return redirect()->route('cart');
     }
