@@ -34,8 +34,9 @@ Route::group(['prefix'=>'store', 'where'=>['id'=>'[0-9]+']], function() {
 Route::get('/',     'StoreController@index');
 Route::get('/home', 'StoreController@index');
 Route::get('/store', 'StoreController@index');
-Route::get('/login', ['as'=>'login']);
-Route::get('/logout', ['as'=>'logout']);
+Route::get('/login',            ['as'=>'login',             'uses'=>'LoginController@index']);
+Route::get('/login/autorizar',  ['as'=>'login.autorizar',   'uses'=>'LoginController@autorizar']);
+Route::get('/logout',           ['as'=>'logout',            'uses'=>'LoginController@logout']);
 
 Route::group(['prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
 

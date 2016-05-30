@@ -14,7 +14,8 @@ class UserTableSeeder extends Seeder {
         User::create([
             'name' => 'Wandry',
             'password' => bcrypt('123456'),
-            'email' => 'wandryf@gmail.com'
+            'email' => 'wandryf@gmail.com',
+            'active' => 1
         ]);
 
         factory('CodeCommerce\User', 10)->create();

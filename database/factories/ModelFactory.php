@@ -7,6 +7,7 @@ $factory->define('CodeCommerce\User', function($faker) {
 		'email'=>$faker->email,
 		'password'=>str_random(10),
 		'remember_token'=>str_random(10),
+		'active'=>1
 	];
 
 });

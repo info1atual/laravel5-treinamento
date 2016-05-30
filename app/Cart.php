@@ -59,7 +59,6 @@ class Cart
     {
     	
     	$total = 0;
-    	// dd($this->items['qtd']);
     	foreach ($this->items as $item) {
     		$total += $item['qtd'] * $item['price'];
     	}
