@@ -9,6 +9,7 @@ use CodeCommerce\Http\Controllers\Controller;
 use CodeCommerce\Category;
 use CodeCommerce\Product;
 use CodeCommerce\Tag;
+use CodeCommerce\Order;
 
 class StoreController extends Controller
 {
@@ -46,6 +47,15 @@ class StoreController extends Controller
         $categories = Category::all();
         $tag = Tag::with('products')->find($id);
         return view('store.tag', compact('categories', 'tag'));
+
+    }
+
+    public function account()
+    {
+        
+        $orders = Order::with('items')->where('user_id', auth()->user()->id)->get();
+        // dd($orders);
+        return view('store.account', compact('orders'));
 
     }
 

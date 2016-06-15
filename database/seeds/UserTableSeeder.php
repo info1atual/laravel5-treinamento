@@ -15,10 +15,18 @@ class UserTableSeeder extends Seeder {
             'name' => 'Wandry',
             'password' => bcrypt('123456'),
             'email' => 'wandryf@gmail.com',
-            'active' => 1
+            'active' => 1,
+            'is_admin' => 1
         ]);
 
-        factory('CodeCommerce\User', 10)->create();
+        User::create([
+            'name' => 'Wandry 2',
+            'password' => bcrypt('123456'),
+            'email' => 'teste@gmail.com',
+            'active' => 1,
+        ]);
+
+        factory('CodeCommerce\User', 3)->create();
 
     }
 

@@ -32,15 +32,21 @@ Route::group(['prefix'=>'store', 'where'=>['id'=>'[0-9]+']], function() {
 // --------------------- //
 
 Route::get('/',     'StoreController@index');
-Route::get('/home', 'StoreController@index');
-Route::get('/store', 'StoreController@index');
+Route::get('/home',     ['as'=>'home', 'uses'=>'StoreController@index']);
+Route::get('/store',    ['as'=>'store', 'uses'=>'StoreController@index']);
 Route::get('/login',            ['as'=>'login',             'uses'=>'LoginController@index']);
 Route::get('/login/autorizar',  ['as'=>'login.autorizar',   'uses'=>'LoginController@autorizar']);
 Route::get('/logout',           ['as'=>'logout',            'uses'=>'LoginController@logout']);
 
-Route::group(['prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('checkout/placeorder', ['as' => 'store.checkout.place', 'uses' => 'CheckoutController@place']);
+    Route::get('account/orders', ['as' => 'account.orders', 'uses' => 'AccountController@orders']);
+});
 
-    Route::get('/', 'HomeController@index');
+Route::group(['middleware'=>'auth_admin', 'prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
+
+    // Area Admin
+    Route::get('/', ['as'=>'admin', 'uses'=>'HomeController@index']);
 
     Route::group(['prefix'=>'products'], function() {
         get('/',            ['as'=>'products',            'uses'=>'ProductsController@index']);

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -10,7 +11,6 @@
     <link href="{{ asset(elixir('css/all.css')) }}" rel="stylesheet">
 
 </head><!--/head-->
-
 <body>
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
@@ -49,8 +49,8 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Minha conta</a></li>
-                            <li><a href="http://commerce.dev:10088/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                            <li><a href="{{ route('account.orders') }}"><i class="fa fa-user"></i> Minha conta</a></li>
+                            <li><a href="{{ route('account.orders') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
                             
                         </ul>
@@ -62,6 +62,7 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{ route('account.orders') }}">Área do Cliente</a></li>
                                         <li><a href="{{ url('/auth/logout') }}">Logout</a></li>
                                     </ul>
                                 </li>
@@ -112,8 +113,6 @@
     </div><!--/header-bottom-->
 </header><!--/header-->
 
-
-
 <section>
     <div class="container">
         <div class="row">
@@ -140,7 +139,13 @@
         <div class="container">
             <div class="row">
                 <p class="pull-left">Copyright © {{ date('Y') }} CodeCommerce. All rights reserved.</p>
-                <p class="pull-right">Designed by <span><a target="_blank" href="http://about.me/wandrymoura">Wandry Moura</a></span></p>
+                <p class="pull-right">
+                    Designed by 
+                    <span>
+                        <a target="_blank" href="http://about.me/wandrymoura">Wandry Moura</a> | 
+                        <a href="{{ route('admin') }}" target="_blank">Administração</a>
+                    </span>
+                </p>
             </div>
         </div>
     </div>

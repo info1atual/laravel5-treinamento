@@ -8,6 +8,7 @@ use CodeCommerce\Http\Requests;
 use CodeCommerce\Http\Controllers\Controller;
 use CodeCommerce\Cart;
 use CodeCommerce\Product;
+use CodeCommerce\Order;
 use Session;
 
 class CartController extends Controller
@@ -22,11 +23,6 @@ class CartController extends Controller
 
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         // $request->session()->flush();
@@ -37,12 +33,6 @@ class CartController extends Controller
         return view('store.cart', ['cart'=>Session::get('cart')]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function add($id)
     {
         if (Session::has('cart')) {
@@ -56,12 +46,6 @@ class CartController extends Controller
         return redirect()->route('cart');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function getCart()
     {
         if (Session::has('cart')) {
@@ -72,24 +56,11 @@ class CartController extends Controller
         return $cart;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update($id, $qtd)
     {
         if (Session::has('cart')) {
@@ -102,12 +73,6 @@ class CartController extends Controller
         return redirect()->route('cart');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $cart = $this->getCart();
@@ -115,4 +80,27 @@ class CartController extends Controller
         Session::set('cart', $cart);
         return redirect()->route('cart');
     }
+
+    public function end()
+    {
+        
+        $cart = Session::get('cart');
+        $order = Order::create([
+            'total'=>$cart->getTotal(),
+            'user_id'=>auth()->user()->id,
+            'status'=>1
+        ]);
+        foreach($cart->all() as $k=>$item){
+            $order->items()->create([
+                'product_id'=>$k, 
+                'price'=>$item['price'],
+                'qtd'=>$item['qtd'],
+                'total'=>$item['qtd']*$item['price']
+            ]);
+        }
+        $cart->clear();
+        return redirect()->route('account');
+
+    }
+
 }
