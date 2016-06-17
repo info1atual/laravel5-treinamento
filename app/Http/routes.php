@@ -40,7 +40,7 @@ Route::get('/logout',           ['as'=>'logout',            'uses'=>'LoginContro
 
 Route::group(['middleware'=>'auth'], function(){
     Route::get('checkout/placeorder', ['as' => 'store.checkout.place', 'uses' => 'CheckoutController@place']);
-    Route::get('account/orders', ['as' => 'account.orders', 'uses' => 'AccountController@orders']);
+    Route::get('account/orders', ['as' => 'account.orders', 'uses' => 'StoreController@orders']);
 });
 
 Route::group(['middleware'=>'auth_admin', 'prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {

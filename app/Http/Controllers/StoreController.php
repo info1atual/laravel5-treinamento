@@ -50,7 +50,7 @@ class StoreController extends Controller
 
     }
 
-    public function account()
+    public function orders()
     {
         
         $orders = Order::with('items')->where('user_id', auth()->user()->id)->get();
