@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.store')
 
 @section('content')
 <div class="container-fluid">
@@ -46,10 +46,20 @@
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">Login</button>
+									
+								<div class="col-md-6 col-md-offset-4 text-right">
+									<a class="btn btn-link" href="{{ url('/password/email') }}">Esqueceu sua senha?</a>
+									<button type="submit" class="btn btn-primary">Login</button>
+								</div>
 
-								<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
+							<br>
+							<div class="row">
+							<hr>
+								
+								<div class="col-md-6 col-md-offset-4">
+									<a class="btn btn-info" href="{{ url('/auth/register') }}">Novo usuário</a>
+								</div>
+
 							</div>
 						</div>
 					</form>

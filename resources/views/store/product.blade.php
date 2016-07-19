@@ -1,4 +1,4 @@
-@extends('store.store')
+@extends('layouts.store')
 
 @section('categories')
     

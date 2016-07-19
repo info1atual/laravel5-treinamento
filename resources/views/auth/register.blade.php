@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.store')
 
 @section('content')
 <div class="container-fluid">
@@ -21,40 +21,98 @@
 					<form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Name</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+						<div class="row">
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Name</label>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="name" value="{{ old('name') }}">
+								</div>
 							</div>
+
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+						<div class="row">
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">E-Mail Address</label>
+								<div class="col-md-6">
+									<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+								</div>
 							</div>
+
+						</div>
+						<div class="row">
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Password</label>
+								<div class="col-md-6">
+									<input type="password" class="form-control" name="password">
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+								
+							<div class="form-group">
+								<label class="col-md-4 control-label">Confirm Password</label>
+								<div class="col-md-6">
+									<input type="password" class="form-control" name="password_confirmation">
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Endereço</label>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="endereco">
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Bairro</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" name="bairro">
+								</div>
+							</div>
+
+						</div>
+						<div class="row">
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Cidade</label>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="cidade">
+								</div>
+							</div>
+
 						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password">
+						<div class="row">
+							
+							<div class="form-group">
+								<label class="col-md-4 control-label">Estado</label>
+								<div class="col-md-4">
+									<input type="text" class="form-control" name="estado">
+								</div>
 							</div>
-						</div>
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
-								<input type="password" class="form-control" name="password_confirmation">
-							</div>
 						</div>
-
+						
+						<div class="row">
+							
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
 									Register
 								</button>
 							</div>
+						</div>
 						</div>
 					</form>
 				</div>

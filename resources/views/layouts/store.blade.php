@@ -50,7 +50,6 @@
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="{{ route('account.orders') }}"><i class="fa fa-user"></i> Minha conta</a></li>
-                            <li><a href="{{ route('account.orders') }}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-cart"></i> Carrinho</a></li>
                             
                         </ul>
@@ -142,8 +141,11 @@
                 <p class="pull-right">
                     Designed by 
                     <span>
-                        <a target="_blank" href="http://about.me/wandrymoura">Wandry Moura</a> | 
-                        <a href="{{ route('admin') }}" target="_blank">Administração</a>
+                        <a target="_blank" href="http://about.me/wandrymoura">Wandry Moura</a> 
+                        @if (isset(auth()->user()->id) && auth()->user()->is_admin == 1)
+                            | 
+                            <a href="{{ route('admin') }}" target="_blank">Administração</a>
+                        @endif
                     </span>
                 </p>
             </div>

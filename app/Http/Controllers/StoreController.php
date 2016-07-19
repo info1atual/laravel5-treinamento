@@ -50,13 +50,4 @@ class StoreController extends Controller
 
     }
 
-    public function orders()
-    {
-        
-        $orders = Order::with('items')->where('user_id', auth()->user()->id)->get();
-        // dd($orders);
-        return view('store.account', compact('orders'));
-
-    }
-
 }

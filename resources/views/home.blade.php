@@ -8,11 +8,20 @@
                 <div class="panel-heading">Home</div>
 
                 <div class="panel-body">
-                    <div class="col-xs-6">
-                        <a href="{{ url('admin/products') }}" class="btn btn-primary btn-block well-sm">Products</a>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="{{ route('admin.pedidos') }}" class="btn btn-warning btn-block well-sm">Pedidos</a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a href="{{ route('admin.products') }}" class="btn btn-primary btn-block well-sm">Produtos</a>
+                        </div>                        
                     </div>
-                    <div class="col-xs-6">
-                        <a href="{{ url('admin/categories') }}" class="btn btn-primary btn-block well-sm">Categories</a>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <a href="{{ route('admin.categories') }}" class="btn btn-primary btn-block well-sm">Categorias</a>
+                        </div>
                     </div>
                 </div>
                 

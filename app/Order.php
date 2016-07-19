@@ -19,6 +19,11 @@ class Order extends Model
 
     public function user()
     {
-    	return $this->belongsTo("CodeCommerce\User");
+        return $this->belongsTo("CodeCommerce\User");
+    }
+
+    public function product()
+    {
+    	return $this->belongsTo("CodeCommerce\Product");
     }
 }

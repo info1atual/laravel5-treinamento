@@ -9,6 +9,7 @@ use CodeCommerce\Http\Controllers\Controller;
 use CodeCommerce\Order;
 use CodeCommerce\OrderItem;
 use Session;
+use CodeCommerce\Events\CheckoutEvent;
 
 class CheckoutController extends Controller
 {
@@ -18,21 +19,27 @@ class CheckoutController extends Controller
             return "Não existe sessão";
         }
         $cart = Session::get('cart');
-        $order = Order::create([
-            'total'=>$cart->getTotal(),
-            'user_id'=>auth()->user()->id,
-            'status'=>1
-        ]);
-        foreach($cart->all() as $k=>$item){
-            $order->items()->create([
-                'product_id'=>$k, 
-                'price'=>$item['price'],
-                'qtd'=>$item['qtd'],
-                'total'=>$item['qtd']*$item['price']
+        if ($cart->getTotal() > 0) {
+            $order = Order::create([
+                'total'=>$cart->getTotal(),
+                'user_id'=>auth()->user()->id,
+                'status'=>1
             ]);
+            foreach($cart->all() as $k=>$item){
+                $order->items()->create([
+                    'product_id'=>$k, 
+                    'price'=>$item['price'],
+                    'qtd'=>$item['qtd'],
+                    'total'=>$item['qtd']*$item['price']
+                ]);
+            }
+            $cart->clear();
+            event(new \CodeCommerce\Events\CheckoutEvent());
+        } else {
+            return redirect()->back();
         }
-        $cart->clear();
-        return redirect()->route('account.orders');
+        // return redirect()->route('account.orders');
+        return view('store.checkout', compact('order'));
 
     }
 
