@@ -55,14 +55,19 @@
                                         <td class="text-right"><strong>R$ {{ $order->total }}</strong></td>
                                         <td class="text-center">
                                             @if (intval($order->status) == 1)
-                                                <span class="label label-success">Aberto</span>
+                                                <span class="label label-warning">Aberto</span>
                                             @elseif ($order->status == 0) 
-                                                <span class="label label-danger">Finalizado</span>
+                                                <span class="text-success"><i class="fa fa-check"></i></span>
                                             @endif
 
                                         </td>
                                         <td class="text-center">
-                                            <a href="#" id="status" data-pedido="{{ $order->id }}"><i class="fa fa-edit fa-lg"></i></a>
+                                            @if (intval($order->status) == 1)
+                                                <a href="#" id="status" data-pedido="{{ $order->id }}"><i class="fa fa-edit fa-lg"></i></a>
+                                            @else
+                                                <a href="#" id="">&nbsp;&nbsp;</a>
+                                            @endif
+
                                         </td>
                                     </tr>
 
@@ -150,7 +155,7 @@
     
     <script>
         
-        $("#status").on('click', function() {
+        $("[id=status]").on('click', function() {
             $("#modal-status").modal("show");
             pedido = $(this).data('pedido');
             $("#pedido").val(pedido);
