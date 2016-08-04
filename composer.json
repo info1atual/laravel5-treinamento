@@ -10,8 +10,7 @@
 		"fzaninotto/faker": "^1.5",
 		"graham-campbell/flysystem": "^3.3",
 		"league/flysystem-aws-s3-v3": "^1.0",
-		"wesleywillians/laravel-pagseguro": "dev-master",
-		"guzzlehttp/guzzle": "^6.2"
+		"wesleywillians/laravel-pagseguro": "dev-master"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",

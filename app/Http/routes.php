@@ -43,6 +43,8 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('account/orders', ['as' => 'account.orders', 'uses' => 'AccountController@orders']);
 });
 
+Route::get('teste', 'CheckoutController@teste');
+
 Route::group(['middleware'=>'auth_admin', 'prefix'=>'admin', 'where'=>['id'=>'[0-9]+']], function() {
 
     // Area Admin

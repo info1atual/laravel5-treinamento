@@ -10,6 +10,8 @@ use CodeCommerce\Order;
 use CodeCommerce\OrderItem;
 use Session;
 use CodeCommerce\Events\CheckoutEvent;
+use PHPSC\PagSeguro\Items\Item;
+use PHPSC\PagSeguro\Requests\Checkout\CheckoutService;
 
 class CheckoutController extends Controller
 {
@@ -40,6 +42,20 @@ class CheckoutController extends Controller
         }
         // return redirect()->route('account.orders');
         return view('store.checkout', compact('order'));
+
+    }
+
+    public function teste(CheckoutService $checkoutService)
+    {
+
+        $checkout = $checkoutService->createCheckoutBuilder()
+            ->addItem(new Item(1, 'Televisão LED 500', 8999.99))
+            ->addItem(new Item(2, 'Video-game mega ultra blaster', 799.99))
+            ->getCheckout();
+
+        $response = $checkoutService->checkout($checkout);
+
+        return redirect($response->getRedirectionUrl());
 
     }
 
