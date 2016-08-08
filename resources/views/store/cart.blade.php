@@ -29,7 +29,7 @@
                             <th>Imagem</th>
                             <th>Descrição</th>
                             <th>Quantidade</th>
-                            <th>Preço</th>
+                            <th></th>
                             <th>Valor</th>
                             <th>SubTotal</th>
                             <th></th>
@@ -58,7 +58,7 @@
                                     </div>
                                 </td>
                                 <td class="col-xs-1">
-                                    <a href="#" id="atualizar" data-id="{{ $k }}" class="cart_update">
+                                    <a href="#" class="btn btn-info" id="atualizar" style="margin-top: -16px" data-id="{{ $k }}" class="cart_update">
                                         Atualizar
                                     </a>
                                 </td>
@@ -68,8 +68,8 @@
                                 <td class="col-xs-2 cart_price text-right">
                                     <h4>R$ {{ number_format($item['price'] * $item['qtd'], 2,",",".") }}</h4>
                                 </td>
-                                <td class="col-xs-2 cart_delete text-center">
-                                    <a href="{{ route('cart.remove', $k) }}" class="cart_quantity_delete">
+                                <td class="col-xs-2 text-center">
+                                    <a href="{{ route('cart.remove', $k) }}" style="margin-top: -16px" class="btn btn-info">
                                         Excluir
                                     </a>
                                 </td>
@@ -131,7 +131,7 @@
 
                 id = $(this).data('id')
                 qtd = $(this).parent().parent().children('#area-quantidade').children().children('#quantidade').val()
-                window.location.href = '{{ url() }}' + '/store/cart/' + id + '/' + qtd + '/update' 
+                window.location.href = '{{ url("/") }}' + '/store/cart/' + id + '/' + qtd + '/update' 
 
             });
             

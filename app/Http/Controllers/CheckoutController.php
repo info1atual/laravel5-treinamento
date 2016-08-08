@@ -15,7 +15,7 @@ use PHPSC\PagSeguro\Requests\Checkout\CheckoutService;
 
 class CheckoutController extends Controller
 {
-    public function place(Order $orderModel)
+    public function place(Order $orderModel, CheckoutService $checkoutService)
     {
         if(!Session::has('cart')){
             return "Não existe sessão";
@@ -27,7 +27,9 @@ class CheckoutController extends Controller
                 'user_id'=>auth()->user()->id,
                 'status'=>1
             ]);
+            $checkout = $checkoutService->createCheckoutBuilder();
             foreach($cart->all() as $k=>$item){
+                $checkout->addItem(new Item($k, $item['name'], number_format($item['price'],2,".", ""), $item['qtd']));
                 $order->items()->create([
                     'product_id'=>$k, 
                     'price'=>$item['price'],
@@ -37,6 +39,9 @@ class CheckoutController extends Controller
             }
             $cart->clear();
             event(new \CodeCommerce\Events\CheckoutEvent());
+            $response = $checkoutService->checkout($checkout->getCheckout());
+            // dd($response);
+            return redirect($response->getRedirectionUrl());
         } else {
             return redirect()->back();
         }
